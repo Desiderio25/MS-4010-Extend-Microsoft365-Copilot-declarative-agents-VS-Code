@@ -1,10 +1,13 @@
 ---
 lab:
-  title: Untitled exercise
-  description: Previously, when exploring the menu, you had to rely on the textual description of the dish.
+  title: Summary
+  description: In this lab, you extended an existing API plugin for a declarative agent to render information received from an API using Adaptive Cards, improving the visual presentation of data in Microsoft 365 Copilot.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 You want to improve the user experience when working with your declarative agent. Specifically, you want the agent to present the data that it receives from the API in a rich way.

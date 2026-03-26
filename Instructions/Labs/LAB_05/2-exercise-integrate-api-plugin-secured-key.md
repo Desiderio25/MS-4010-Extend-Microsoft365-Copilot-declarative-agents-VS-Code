@@ -6,6 +6,9 @@ lab:
   duration: 10 minutes
   level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 # Exercise 1 - Integrate an API plugin with an API secured with a key

@@ -1,10 +1,13 @@
 ---
 lab:
-  title: Untitled exercise
-  description: Previously, you and your colleagues had to spend valuable time on the phone to learn about today's menu and place an order that meets everyone's dietary needs.
+  title: Summary
+  description: In this lab, you built a declarative agent for Microsoft 365 Copilot integrated with an API plugin that connects to an anonymous API, allowing users to browse a restaurant menu and place orders using natural language.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 You're looking into building a solution for your organization that allows you to order food from a local restaurant. The solution must use natural language and integrate with Microsoft 365 Copilot.

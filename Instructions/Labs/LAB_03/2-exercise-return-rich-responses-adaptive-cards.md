@@ -4,8 +4,11 @@ lab:
   module: 'LAB 03: Use Adaptive Cards to show data in API plugins for declarative agents'
   description: The sample API allows users to browse the menu and place an order. Let's create an adaptive card that shows the order summary.
   duration: 10 minutes
-  level: 100
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 # Exercise 1 - Download project and build an adaptive card

@@ -1,10 +1,13 @@
 ---
 lab:
-  title: Untitled exercise
-  description: Previously, you and your colleagues had to manually lookup information in the repairs management system which was time-consuming and error prone.
+  title: Summary
+  description: In this lab, you built a declarative agent for Microsoft 365 Copilot integrated with API plugins secured with API key and OAuth authentication, allowing it to connect to secured external systems.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 You're looking into building a solution for your car repair shop to let you and your colleagues easily look up information about the requested repairs using natural language.

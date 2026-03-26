@@ -6,6 +6,9 @@ lab:
   duration: 35 minutes
   level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 # Introduction

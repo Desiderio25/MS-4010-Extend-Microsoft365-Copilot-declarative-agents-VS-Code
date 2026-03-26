@@ -4,8 +4,12 @@ lab:
   module: 'LAB 04: Add custom knowledge to declarative agents using Microsoft Graph connectors and Visual Studio Code'
   description: Teams Toolkit creates a new declarative agent project. To scope it to your scenario, update the agent's description and instructions.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
+    - Microsoft Graph
 ---
 
 # Exercise 2 - Create declarative agent and integrate Graph connector

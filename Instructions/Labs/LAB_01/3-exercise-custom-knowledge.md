@@ -4,10 +4,11 @@ lab:
   module: 'LAB 01: Build a declarative agent for Microsoft 365 Copilot using Visual Studio Code'
   description: In this exercise, you will Microsoft Learn as a grounding source for your agent. Your agent will become an expert on Microsoft 365.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
   primarytopics:
     - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 # Exercise 2 - Configure custom knowledge

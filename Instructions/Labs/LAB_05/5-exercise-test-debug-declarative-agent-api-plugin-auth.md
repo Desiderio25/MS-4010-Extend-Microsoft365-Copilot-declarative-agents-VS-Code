@@ -4,7 +4,7 @@ lab:
   module: 'LAB 05: Authenticate your API plugin for declarative agents with secured APIs'
   description: In this exercise, you will test and deploy your declarative agent to Microsoft 365 and test it using Microsoft 365 Copilot Chat.
   duration: 5 minutes
-  level: 200
+  level: 300
   islab: true
   primarytopics:
     - Microsoft 365

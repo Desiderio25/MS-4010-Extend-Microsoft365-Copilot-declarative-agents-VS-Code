@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Untitled exercise
-  description: 'You did some research and found that building a declarative agent for Microsoft 365 Copilot, integrated with a Microsoft Graph connector is suitable for your needs, because:'
+  title: Summary
+  description: 'In this lab, you built a declarative agent for Microsoft 365 Copilot integrated with a Microsoft Graph connector, allowing it to provide authoritative answers based on external data.'
   duration: 10 minutes
   level: 300
   islab: true

@@ -4,8 +4,11 @@ lab:
   module: 'LAB 02: Build your first action for declarative agents with API plugin by using Visual Studio Code'
   description: The declarative agent that you're building in this exercise helps users browse the menu of the local Italian restaurant and place orders. To optimize the agent for this scenario, update its name, description, and instructions.
   duration: 5 minutes
-  level: 100
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 # Exercise 3 - Connect the plugin definition to the declarative agent
