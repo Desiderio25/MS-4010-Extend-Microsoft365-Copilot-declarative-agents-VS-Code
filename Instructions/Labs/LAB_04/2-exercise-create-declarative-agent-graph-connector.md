@@ -4,8 +4,12 @@ lab:
   module: 'LAB 04: Add custom knowledge to declarative agents using Microsoft Graph connectors and Visual Studio Code'
   description: When you integrate a Copilot agent with a Graph connector, you need to specify the ID of the external connection that the connector created. Typically, you deploy Graph connectors separately from Copilot agents. To complete this exercise, deploy an existing Graph connector which you reference in later steps.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
+    - Microsoft Graph
 ---
 
 # Exercise 1 - Create an external connection for the Graph connector

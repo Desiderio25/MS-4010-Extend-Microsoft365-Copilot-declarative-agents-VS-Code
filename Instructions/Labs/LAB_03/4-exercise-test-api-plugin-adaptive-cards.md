@@ -4,7 +4,7 @@ lab:
   module: 'LAB 03: Use Adaptive Cards to show data in API plugins for declarative agents'
   description: The final step is to test the declarative agent with API plugin in Microsoft 365 Copilot.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
   primarytopics:
     - Microsoft 365

@@ -4,8 +4,11 @@ lab:
   module: 'LAB 02: Build your first action for declarative agents with API plugin by using Visual Studio Code'
   description: In this exercise, APIs use this file as their data source.
   duration: 10 minutes
-  level: 100
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 # Exercise 1 - Download project and examine files

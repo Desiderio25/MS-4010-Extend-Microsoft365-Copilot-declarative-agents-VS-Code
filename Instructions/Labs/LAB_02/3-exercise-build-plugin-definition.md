@@ -4,8 +4,11 @@ lab:
   module: 'LAB 02: Build your first action for declarative agents with API plugin by using Visual Studio Code'
   description: An API plugin defines one or more functions that map to API operations defined in the API specification. Each function consists of a name and a description and a response definition that instructs the agent how to display the data to users.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 # Exercise 2 - Build API plugin definition

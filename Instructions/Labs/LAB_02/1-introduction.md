@@ -5,7 +5,7 @@ lab:
   description: Microsoft 365 Copilot agents let you create AI-powered assistants optimized for specific scenarios. Using instructions, you define the context for the agent and specify settings such as tone of voice or how it should respond. By configuring the agent's skills, you give it the ability to interact with external systems, trigger certain behavior under system conditions, or use custom workflow logic. One type of skill is actions that allow a declarative agent to communicate with APIs both for retrieving and modifying data.
   duration: 35 minutes
   level: 300
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft 365
     - Microsoft 365 Copilot

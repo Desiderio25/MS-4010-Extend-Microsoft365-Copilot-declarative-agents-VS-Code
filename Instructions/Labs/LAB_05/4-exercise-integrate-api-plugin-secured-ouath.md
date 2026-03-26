@@ -4,9 +4,11 @@ lab:
   module: 'LAB 05: Authenticate your API plugin for declarative agents with secured APIs'
   description: The next part to explore is the Azure Functions' authentication and authorization settings. The API in this exercise uses Azure Functions' built-in authentication and authorization capabilities. Teams Toolkit configures these capabilities while provisioning Azure Functions to Azure.
   duration: 10 minutes
-  level: 400
+  level: 300
   islab: true
   primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
     - Azure
     - Azure Functions
 ---

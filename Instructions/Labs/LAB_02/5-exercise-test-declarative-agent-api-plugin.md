@@ -4,7 +4,7 @@ lab:
   module: 'LAB 02: Build your first action for declarative agents with API plugin by using Visual Studio Code'
   description: The final step is to test the declarative agent with API plugin in Microsoft 365 Copilot.
   duration: 10 minutes
-  level: 200
+  level: 300
   islab: true
   primarytopics:
     - Microsoft 365

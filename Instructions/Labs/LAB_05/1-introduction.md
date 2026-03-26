@@ -4,8 +4,8 @@ lab:
   module: 'LAB 05: Authenticate your API plugin for declarative agents with secured APIs'
   description: Declarative agents for Microsoft 365 Copilot let you create AI-powered assistants optimized for specific scenarios. Using instructions, you define the context for the agent and configure its tone of voice or how it should respond. By integrating an agent with an API, you allow the agent to connect to external applications to retrieve data and perform actions.
   duration: 16 minutes
-  level: 200
-  islab: true
+  level: 300
+  islab: false
   primarytopics:
     - Microsoft 365
     - Microsoft 365 Copilot

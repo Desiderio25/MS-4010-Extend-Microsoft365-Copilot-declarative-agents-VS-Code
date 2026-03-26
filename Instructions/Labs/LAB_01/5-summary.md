@@ -1,10 +1,13 @@
 ---
 lab:
-  title: Untitled exercise
-  description: Untitled exercise
+  title: Summary
+  description: In this lab, you learned how to create a declarative agent using Microsoft 365 Agents Toolkit in Visual Studio Code, configure custom instructions, set up grounding data, and add conversation starters.
   duration: 10 minutes
-  level: 100
-  islab: true
+  level: 300
+  islab: false
+  primarytopics:
+    - Microsoft 365
+    - Microsoft 365 Copilot
 ---
 
 In this lab, you learned how to:
