@@ -5,7 +5,7 @@ lab:
   description: Declarative agents for Microsoft 365 Copilot let you create AI-powered assistants optimized for specific scenarios. Using instructions, you define the context for the agent and configure its tone of voice or how it should respond. By integrating an agent with an API, you allow the agent to connect to external applications to retrieve data and perform actions.
   duration: 16 minutes
   level: 300
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft 365
     - Microsoft 365 Copilot

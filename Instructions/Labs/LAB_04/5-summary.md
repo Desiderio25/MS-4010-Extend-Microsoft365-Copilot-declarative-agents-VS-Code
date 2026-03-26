@@ -4,7 +4,7 @@ lab:
   description: 'In this lab, you built a declarative agent for Microsoft 365 Copilot integrated with a Microsoft Graph connector, allowing it to provide authoritative answers based on external data.'
   duration: 10 minutes
   level: 300
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft 365
     - Microsoft 365 Copilot

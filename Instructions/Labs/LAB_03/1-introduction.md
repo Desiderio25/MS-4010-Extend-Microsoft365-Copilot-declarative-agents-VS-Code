@@ -5,7 +5,7 @@ lab:
   description: 'In this module, you extend an existing API plugin for a declarative agent to render information that it receives from an API using Adaptive Cards. You learn to:'
   duration: 35 minutes
   level: 300
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft 365
     - Microsoft 365 Copilot

@@ -4,7 +4,7 @@ lab:
   description: In this lab, you extended an existing API plugin for a declarative agent to render information received from an API using Adaptive Cards, improving the visual presentation of data in Microsoft 365 Copilot.
   duration: 10 minutes
   level: 300
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft 365
     - Microsoft 365 Copilot

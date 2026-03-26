@@ -5,7 +5,7 @@ lab:
   description: 'Here, you create a declarative agent which can answer product support questions using information stored in documents in Microsoft 365:'
   duration: 30 minutes
   level: 300
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft 365
     - Microsoft 365 Copilot

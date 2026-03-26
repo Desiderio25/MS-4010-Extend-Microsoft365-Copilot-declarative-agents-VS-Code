@@ -4,7 +4,7 @@ lab:
   description: In this lab, you built a declarative agent for Microsoft 365 Copilot integrated with API plugins secured with API key and OAuth authentication, allowing it to connect to secured external systems.
   duration: 10 minutes
   level: 300
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft 365
     - Microsoft 365 Copilot
