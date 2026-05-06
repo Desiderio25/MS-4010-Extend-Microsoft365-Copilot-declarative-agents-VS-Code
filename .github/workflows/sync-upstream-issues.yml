@@ -2,8 +2,8 @@ name: Sync Upstream Issues to Fork
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour
-  workflow_dispatch:       # Allows manual trigger
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   sync-issues:
@@ -23,7 +23,6 @@ jobs:
             const FORK_REPO = context.repo.repo;
             const SYNC_LABEL = 'upstream-sync';
 
-            // Get all open issues from upstream (excluding pull requests)
             const upstreamIssues = await github.paginate(github.rest.issues.listForRepo, {
               owner: UPSTREAM_OWNER,
               repo: UPSTREAM_REPO,
@@ -32,9 +31,8 @@ jobs:
             });
 
             const openIssues = upstreamIssues.filter(i => !i.pull_request);
-            console.log(`Found ${openIssues.length} open issues in upstream`);
+            console.log('Found ' + openIssues.length + ' open issues in upstream');
 
-            // Get existing issues in fork to avoid duplicates
             const forkIssues = await github.paginate(github.rest.issues.listForRepo, {
               owner: FORK_OWNER,
               repo: FORK_REPO,
@@ -43,23 +41,23 @@ jobs:
               per_page: 100,
             });
 
-            // Build a set of upstream issue numbers already synced
             const syncedNumbers = new Set();
             for (const issue of forkIssues) {
-              const match = issue.body?.match(/🔗 \*\*Upstream issue:\*\* .*\/issues\/(\d+)/);
-              if (match) syncedNumbers.add(parseInt(match[1]));
+              if (issue.body) {
+                const match = issue.body.match(/Upstream issue:.*\/issues\/(\d+)/);
+                if (match) syncedNumbers.add(parseInt(match[1]));
+              }
             }
 
-            console.log(`Already synced: ${[...syncedNumbers].join(', ') || 'none'}`);
+            console.log('Already synced: ' + ([...syncedNumbers].join(', ') || 'none'));
 
-            // Ensure the sync label exists in the fork
             try {
               await github.rest.issues.getLabel({
                 owner: FORK_OWNER,
                 repo: FORK_REPO,
                 name: SYNC_LABEL,
               });
-            } catch {
+            } catch (e) {
               await github.rest.issues.createLabel({
                 owner: FORK_OWNER,
                 repo: FORK_REPO,
@@ -70,32 +68,33 @@ jobs:
               console.log('Created upstream-sync label');
             }
 
-            // Create missing issues in fork
             let created = 0;
             for (const issue of openIssues) {
               if (syncedNumbers.has(issue.number)) continue;
 
-              const body = `> 🔗 **Upstream issue:** [${UPSTREAM_OWNER}/${UPSTREAM_REPO}#${issue.number}](${issue.html_url})
-> 👤 **Opened by:** @${issue.user.login}
-> 📅 **Created:** ${new Date(issue.created_at).toDateString()}
+              const upstreamUrl = 'https://github.com/' + UPSTREAM_OWNER + '/' + UPSTREAM_REPO + '/issues/' + issue.number;
+              const createdDate = new Date(issue.created_at).toDateString();
+              const issueBody = issue.body || 'No description provided.';
+              const body = '> Upstream issue: [' + UPSTREAM_OWNER + '/' + UPSTREAM_REPO + '#' + issue.number + '](' + upstreamUrl + ')\n' +
+                '> Opened by: @' + issue.user.login + '\n' +
+                '> Created: ' + createdDate + '\n\n' +
+                '---\n\n' +
+                issueBody;
 
----
-
-${issue.body || '_No description provided._'}`;
+              const title = '[Upstream #' + issue.number + '] ' + issue.title;
 
               await github.rest.issues.create({
                 owner: FORK_OWNER,
                 repo: FORK_REPO,
-                title: `[Upstream #${issue.number}] ${issue.title}`,
-                body,
+                title: title,
+                body: body,
                 labels: [SYNC_LABEL],
               });
 
               created++;
-              console.log(`Created issue for upstream #${issue.number}: ${issue.title}`);
+              console.log('Created issue for upstream #' + issue.number + ': ' + issue.title);
 
-              // Avoid hitting rate limits
               await new Promise(r => setTimeout(r, 1000));
             }
 
-            console.log(`Done! Created ${created} new issue(s).`);
+            console.log('Done! Created ' + created + ' new issue(s).');
