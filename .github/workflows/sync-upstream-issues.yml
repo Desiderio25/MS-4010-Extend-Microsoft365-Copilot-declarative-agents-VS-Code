@@ -1,0 +1,101 @@
+name: Sync Upstream Issues to Fork
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:       # Allows manual trigger
+
+jobs:
+  sync-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Sync issues from upstream
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const UPSTREAM_OWNER = 'MicrosoftLearning';
+            const UPSTREAM_REPO = 'MS-4010-Extend-Microsoft365-Copilot-declarative-agents-VS-Code';
+            const FORK_OWNER = context.repo.owner;
+            const FORK_REPO = context.repo.repo;
+            const SYNC_LABEL = 'upstream-sync';
+
+            // Get all open issues from upstream (excluding pull requests)
+            const upstreamIssues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: UPSTREAM_OWNER,
+              repo: UPSTREAM_REPO,
+              state: 'open',
+              per_page: 100,
+            });
+
+            const openIssues = upstreamIssues.filter(i => !i.pull_request);
+            console.log(`Found ${openIssues.length} open issues in upstream`);
+
+            // Get existing issues in fork to avoid duplicates
+            const forkIssues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: FORK_OWNER,
+              repo: FORK_REPO,
+              state: 'open',
+              labels: SYNC_LABEL,
+              per_page: 100,
+            });
+
+            // Build a set of upstream issue numbers already synced
+            const syncedNumbers = new Set();
+            for (const issue of forkIssues) {
+              const match = issue.body?.match(/🔗 \*\*Upstream issue:\*\* .*\/issues\/(\d+)/);
+              if (match) syncedNumbers.add(parseInt(match[1]));
+            }
+
+            console.log(`Already synced: ${[...syncedNumbers].join(', ') || 'none'}`);
+
+            // Ensure the sync label exists in the fork
+            try {
+              await github.rest.issues.getLabel({
+                owner: FORK_OWNER,
+                repo: FORK_REPO,
+                name: SYNC_LABEL,
+              });
+            } catch {
+              await github.rest.issues.createLabel({
+                owner: FORK_OWNER,
+                repo: FORK_REPO,
+                name: SYNC_LABEL,
+                color: '0075ca',
+                description: 'Synced from upstream repository',
+              });
+              console.log('Created upstream-sync label');
+            }
+
+            // Create missing issues in fork
+            let created = 0;
+            for (const issue of openIssues) {
+              if (syncedNumbers.has(issue.number)) continue;
+
+              const body = `> 🔗 **Upstream issue:** [${UPSTREAM_OWNER}/${UPSTREAM_REPO}#${issue.number}](${issue.html_url})
+> 👤 **Opened by:** @${issue.user.login}
+> 📅 **Created:** ${new Date(issue.created_at).toDateString()}
+
+---
+
+${issue.body || '_No description provided._'}`;
+
+              await github.rest.issues.create({
+                owner: FORK_OWNER,
+                repo: FORK_REPO,
+                title: `[Upstream #${issue.number}] ${issue.title}`,
+                body,
+                labels: [SYNC_LABEL],
+              });
+
+              created++;
+              console.log(`Created issue for upstream #${issue.number}: ${issue.title}`);
+
+              // Avoid hitting rate limits
+              await new Promise(r => setTimeout(r, 1000));
+            }
+
+            console.log(`Done! Created ${created} new issue(s).`);
