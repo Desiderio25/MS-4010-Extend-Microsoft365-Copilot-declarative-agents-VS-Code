@@ -89,8 +89,7 @@ jobs:
                 title: title,
                 body: body,
                 labels: [SYNC_LABEL],
-                assignees: ['Desiderio25', 'copilot']
-              });
+                });
 
               created++;
               console.log('Created issue for upstream #' + issue.number + ': ' + issue.title);
